@@ -1,12 +1,12 @@
 package com.vverbytskyi.codingtask
 
-import android.app.Application
+import com.vverbytskyi.codingtask.di.component.DaggerAppComponent
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 
-class App : Application() {
+class App : DaggerApplication() {
 
-    override fun onCreate() {
-        super.onCreate()
-
-        // TODO: smth cool
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.factory().create(this)
     }
 }
