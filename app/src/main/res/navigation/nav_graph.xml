@@ -8,13 +8,13 @@
 
     <fragment
         android:id="@+id/cars_list"
-        android:name="com.vverbytskyi.codingtask.ui.cars.CarsListFragment"
+        android:name="com.vverbytskyi.codingtask.ui.cars.list.CarsListFragment"
         android:label="@string/title_cars_list"
         tools:layout="@layout/fragment_cars_list" />
 
     <fragment
         android:id="@+id/cars_map"
-        android:name="com.vverbytskyi.codingtask.ui.cars.CarsMapFragment"
+        android:name="com.vverbytskyi.codingtask.ui.cars.map.CarsMapFragment"
         android:label="@string/title_cars_map"
         tools:layout="@layout/fragment_cars_map"/>
 
