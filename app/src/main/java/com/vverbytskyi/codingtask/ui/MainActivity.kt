@@ -6,13 +6,13 @@ import com.vverbytskyi.codingtask.R
 import com.vverbytskyi.codingtask.domain.carslist.CarsListUseCase
 import com.vverbytskyi.codingtask.domain.carslist.model.CarsData
 import com.vverbytskyi.codingtask.ui.common.CompletedState
-import dagger.android.DaggerActivity
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainActivity : DaggerActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
     @Inject
     lateinit var carsListUseCase: CarsListUseCase

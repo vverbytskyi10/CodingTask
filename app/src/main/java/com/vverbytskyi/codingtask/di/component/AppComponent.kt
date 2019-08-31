@@ -9,11 +9,12 @@ import com.vverbytskyi.codingtask.di.module.mappers.MappersModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Component(
     modules = [
-        AndroidInjectionModule::class,
+        AndroidSupportInjectionModule::class,
         AppModule::class,
         MappersModule::class,
         NetworkModule::class,
