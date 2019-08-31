@@ -1,35 +1,39 @@
 package com.vverbytskyi.codingtask.di.module
 
+import com.vverbytskyi.codingtask.BuildConfig
 import com.vverbytskyi.codingtask.data.network.CarsService
 import dagger.Module
 import dagger.Provides
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
+import retrofit2.Converter
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module
 class NetworkModule {
 
     @Provides
-    fun provideApiHttpUrl(): HttpUrl {
-        return HttpUrl.get("123")
-    }
+    fun provideApiHttpUrl(): HttpUrl = HttpUrl.get(BuildConfig.API_URL)
 
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder().build()
-    }
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
 
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient, apiHttpUrl: HttpUrl): Retrofit {
-        return Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl(apiHttpUrl)
-            .build()
-    }
+    fun provideConverterFactory(): Converter.Factory = MoshiConverterFactory.create()
 
     @Provides
-    fun provideCarsService(retrofit: Retrofit): CarsService {
-        return retrofit.create(CarsService::class.java)
-    }
+    fun provideRetrofit(
+        okHttpClient: OkHttpClient,
+        apiHttpUrl: HttpUrl,
+        converterFactory: Converter.Factory
+    ): Retrofit = Retrofit.Builder()
+        .client(okHttpClient)
+        .addConverterFactory(converterFactory)
+        .baseUrl(apiHttpUrl)
+        .build()
+
+    @Provides
+    fun provideCarsService(retrofit: Retrofit): CarsService =
+        retrofit.create(CarsService::class.java)
 }

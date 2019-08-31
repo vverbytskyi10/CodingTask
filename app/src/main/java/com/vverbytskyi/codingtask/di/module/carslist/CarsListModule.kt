@@ -19,6 +19,7 @@ class CarsListModule {
     // endregion
 
     // region: domain
+    @Provides
     fun provideCarsListUseCase(
         carMapper: CarMapper,
         carsRepository: CarsRepository
