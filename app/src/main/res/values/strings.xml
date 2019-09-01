@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CodingTask</string>
+
+    <string name="title_cars_list">List</string>
+    <string name="title_cars_map">Map</string>
+
+    <string name="transmission_type">Transmission: %1s</string>
+    <string name="fuel_type">Fuel: %1s</string>
+    <string name="plate_number">Plate: %1s</string>
+    <string name="load_error_message">An error occurred while cars loading.\nPlease, use top swipe to try again.</string>
+</resources>
