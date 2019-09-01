@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@id/cars_list"
+        android:id="@id/list"
         android:icon="@drawable/ic_list"
         android:title="@string/title_cars_list" />
 
     <item
-        android:id="@id/cars_map"
+        android:id="@id/map"
         android:icon="@drawable/ic_map"
         android:title="@string/title_cars_map" />
 </menu>

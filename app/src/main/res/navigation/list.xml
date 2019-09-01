@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/list"
     app:startDestination="@id/cars_list">
 
     <fragment
@@ -11,11 +11,5 @@
         android:name="com.vverbytskyi.codingtask.ui.cars.list.CarsListFragment"
         android:label="@string/title_cars_list"
         tools:layout="@layout/fragment_cars_list" />
-
-    <fragment
-        android:id="@+id/cars_map"
-        android:name="com.vverbytskyi.codingtask.ui.cars.map.CarsMapFragment"
-        android:label="@string/title_cars_map"
-        tools:layout="@layout/fragment_cars_map"/>
 
 </navigation>
