@@ -11,24 +11,25 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.vverbytskyi.codingtask.R
+import com.vverbytskyi.codingtask.domain.cars.model.Car
 import com.vverbytskyi.codingtask.domain.cars.model.CarsData
 import com.vverbytskyi.codingtask.ui.MainViewModel
 import com.vverbytskyi.codingtask.ui.common.CompletedState
+import com.vverbytskyi.codingtask.ui.common.NetworkState
+import com.vverbytskyi.codingtask.ui.common.map.GoogleMapProvider
+import com.vverbytskyi.codingtask.ui.common.map.MapProvider
 import dagger.android.support.DaggerFragment
 
-class CarsMapFragment : DaggerFragment(), OnMapReadyCallback {
+private const val MUNICH_COORDS_LAT = 48.137154
+private const val MUNICH_COORDS_LON = 11.576124
 
-    private lateinit var map: GoogleMap
+class CarsMapFragment : DaggerFragment() {
 
     private lateinit var model: MainViewModel
+
+    private lateinit var mapProvider: MapProvider
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,37 +45,44 @@ class CarsMapFragment : DaggerFragment(), OnMapReadyCallback {
         initView()
     }
 
-    override fun onMapReady(map: GoogleMap) {
-        this.map = map
-
-        model.getCarsLiveData().observe(this, Observer { state ->
-            when (state) {
-                is CompletedState<*> -> {
-                    (state.data as? CarsData)?.also { cardData ->
-                        cardData.cars.forEach {
-                            map.addMarker(
-                                MarkerOptions()
-                                    .position(LatLng(it.coordinates.latitude, it.coordinates.longitude))
-                                    .title(it.id)
-                                    .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_car)))
-                        }
-                    }
-                }
-            }
-        })
-    }
-
     private fun initView() {
-        (childFragmentManager.findFragmentById(R.id.fragmentMap) as? SupportMapFragment)?.getMapAsync(this)
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.fragmentMap)as? SupportMapFragment
+                ?: throw IllegalStateException("SupportMapFragment wasn't found in the fragment manager")
+
+        mapProvider = GoogleMapProvider(mapFragment) {
+            mapProvider.moveCamera(MUNICH_COORDS_LAT, MUNICH_COORDS_LON)
+
+            model.getCarsLiveData().observe(this, Observer { handleNetworkState(it) })
+        }
     }
 
-    private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor? {
+    private fun handleNetworkState(networkState: NetworkState) {
+        when (networkState) {
+            is CompletedState<*> -> {
+                (networkState.data as? CarsData)?.also { updateCarMarkers(it.cars) }
+            }
+        }
+    }
+
+    private fun updateCarMarkers(carsList: List<Car>) {
+        carsList.forEach {
+            mapProvider.addMarker(
+                it.coordinates.latitude,
+                it.coordinates.longitude,
+                it.id,
+                bitmapFromVector(requireContext(), R.drawable.ic_car)
+            )
+        }
+    }
+
+    private fun bitmapFromVector(context: Context, vectorResId: Int): Bitmap? {
         return ContextCompat.getDrawable(context, vectorResId)?.run {
             setTint(Color.GREEN)
             setBounds(0, 0, intrinsicWidth, intrinsicHeight)
-            val bitmap = Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
-            draw(Canvas(bitmap))
-            BitmapDescriptorFactory.fromBitmap(bitmap)
+            Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888).apply {
+                draw(Canvas(this))
+            }
         }
     }
 }

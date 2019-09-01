@@ -11,6 +11,8 @@ import com.vverbytskyi.codingtask.domain.cars.model.CarMapper
 import com.vverbytskyi.codingtask.ui.MainViewModel
 import com.vverbytskyi.codingtask.ui.cars.list.CarsListAdapter
 import com.vverbytskyi.codingtask.ui.common.ViewModelProviderFactory
+import com.vverbytskyi.codingtask.ui.common.map.GoogleMapProvider
+import com.vverbytskyi.codingtask.ui.common.map.MapProvider
 import dagger.Module
 import dagger.Provides
 
