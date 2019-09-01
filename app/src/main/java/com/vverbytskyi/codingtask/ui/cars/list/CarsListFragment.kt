@@ -10,6 +10,7 @@ import com.vverbytskyi.codingtask.R
 import com.vverbytskyi.codingtask.domain.cars.model.CarsData
 import com.vverbytskyi.codingtask.ui.MainViewModel
 import com.vverbytskyi.codingtask.ui.common.CompletedState
+import com.vverbytskyi.codingtask.ui.common.ErrorState
 import com.vverbytskyi.codingtask.ui.common.decorators.VerticalSpaceItemDecoration
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_cars_list.*
@@ -51,12 +52,22 @@ class CarsListFragment : DaggerFragment() {
         }
 
         model.getCarsLiveData().observe(this, Observer { state ->
-            layoutSwipeRefresh.isRefreshing = false
             when (state) {
                 is CompletedState<*> -> {
                     (state.data as? CarsData)?.also { carsListAdapter.items = it.cars }
+                    layoutState.visibility = View.GONE
+                }
+                is ErrorState -> {
+                    if (layoutSwipeRefresh.isRefreshing) {
+                        // TODO: show toast about refresh error
+                    } else {
+                        if (carsListAdapter.itemCount == 0) {
+                            layoutState.visibility = View.VISIBLE
+                        }
+                    }
                 }
             }
+            layoutSwipeRefresh.isRefreshing = false
         })
     }
 }
