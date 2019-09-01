@@ -37,6 +37,10 @@ class CarsListFragment : DaggerFragment() {
     }
 
     private fun initView() {
+        layoutSwipeRefresh.setOnRefreshListener {
+            model.refreshCars()
+        }
+
         carsList.apply {
             adapter = carsListAdapter
             addItemDecoration(
@@ -47,6 +51,7 @@ class CarsListFragment : DaggerFragment() {
         }
 
         model.getCarsLiveData().observe(this, Observer { state ->
+            layoutSwipeRefresh.isRefreshing = false
             when (state) {
                 is CompletedState<*> -> {
                     (state.data as? CarsData)?.also { carsListAdapter.items = it.cars }

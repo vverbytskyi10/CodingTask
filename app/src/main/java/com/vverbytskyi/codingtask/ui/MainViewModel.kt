@@ -21,5 +21,11 @@ class MainViewModel(private val carsUseCase: CarsUseCase) : BaseViewModel() {
         }
     }
 
+    fun refreshCars() {
+        launch {
+            carsLiveData.value = withContext(Dispatchers.IO) { carsUseCase.getCarsList() }
+        }
+    }
+
     fun getCarsLiveData(): LiveData<NetworkState> = carsLiveData
 }
