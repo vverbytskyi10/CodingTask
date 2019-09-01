@@ -45,4 +45,8 @@ class GoogleMapProvider(
             }
             ?.also { map.addMarker(it) }
     }
+
+    override fun clearMarkers() {
+        map.clear()
+    }
 }

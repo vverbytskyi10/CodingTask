@@ -65,6 +65,7 @@ class CarsMapFragment : DaggerFragment() {
     }
 
     private fun updateCarMarkers(carsList: List<Car>) {
+        mapProvider.clearMarkers()
         carsList.forEach {
             mapProvider.addMarker(
                 it.coordinates.latitude,

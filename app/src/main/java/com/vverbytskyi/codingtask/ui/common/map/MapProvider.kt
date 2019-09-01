@@ -9,4 +9,6 @@ interface MapProvider {
     fun moveCamera(latitude: Double, longitude: Double, zoom: Float = ZOOM_LEVEL_DEFAULT)
 
     fun addMarker(latitude: Double, longitude: Double, markerTitle: String? = null, markerImage: Bitmap? = null)
+
+    fun clearMarkers()
 }
