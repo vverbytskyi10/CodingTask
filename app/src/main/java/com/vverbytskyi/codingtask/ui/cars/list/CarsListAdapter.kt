@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.vverbytskyi.codingtask.R
-import com.vverbytskyi.codingtask.domain.carslist.model.Car
+import com.vverbytskyi.codingtask.domain.cars.model.Car
 import com.vverbytskyi.codingtask.ui.common.extensions.autoNotify
 import kotlin.properties.Delegates
 

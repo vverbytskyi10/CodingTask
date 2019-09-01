@@ -1,6 +1,6 @@
 package com.vverbytskyi.codingtask.di.module.mappers
 
-import com.vverbytskyi.codingtask.domain.carslist.model.CarMapper
+import com.vverbytskyi.codingtask.domain.cars.model.CarMapper
 import dagger.Module
 import dagger.Provides
 

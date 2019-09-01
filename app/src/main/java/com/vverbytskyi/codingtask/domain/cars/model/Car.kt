@@ -1,4 +1,4 @@
-package com.vverbytskyi.codingtask.domain.carslist.model
+package com.vverbytskyi.codingtask.domain.cars.model
 
 data class Car(
     val id: String,

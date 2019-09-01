@@ -1,8 +1,8 @@
-package com.vverbytskyi.codingtask.domain.carslist
+package com.vverbytskyi.codingtask.domain.cars
 
 import com.vverbytskyi.codingtask.ui.common.NetworkState
 
-interface CarsListUseCase {
+interface CarsUseCase {
 
     suspend fun getCarsList(): NetworkState
 }
