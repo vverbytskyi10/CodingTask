@@ -3,4 +3,8 @@
 
     <string name="title_cars_list">List</string>
     <string name="title_cars_map">Map</string>
+
+    <string name="transmission_type">Transmission: %1s</string>
+    <string name="fuel_type">Fuel: %1s</string>
+    <string name="plate_number">Plate: %1s</string>
 </resources>
