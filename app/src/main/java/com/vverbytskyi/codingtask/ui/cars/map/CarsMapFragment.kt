@@ -1,13 +1,12 @@
 package com.vverbytskyi.codingtask.ui.cars.map
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -47,7 +46,7 @@ class CarsMapFragment : DaggerFragment() {
 
     private fun initView() {
         val mapFragment =
-            childFragmentManager.findFragmentById(R.id.fragmentMap)as? SupportMapFragment
+            childFragmentManager.findFragmentById(R.id.fragmentMap) as? SupportMapFragment
                 ?: throw IllegalStateException("SupportMapFragment wasn't found in the fragment manager")
 
         mapProvider = GoogleMapProvider(mapFragment) {
@@ -71,17 +70,18 @@ class CarsMapFragment : DaggerFragment() {
                 it.coordinates.latitude,
                 it.coordinates.longitude,
                 it.id,
-                bitmapFromVector(requireContext(), R.drawable.ic_car)
+                getColoredMapIcon(it.color)
             )
         }
     }
 
-    private fun bitmapFromVector(context: Context, vectorResId: Int): Bitmap? {
-        return ContextCompat.getDrawable(context, vectorResId)?.run {
-            setTint(Color.GREEN)
-            setBounds(0, 0, intrinsicWidth, intrinsicHeight)
-            Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888).apply {
-                draw(Canvas(this))
+    private fun getColoredMapIcon(@ColorRes color: Int): Bitmap? {
+        return context?.let {
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_car)?.run {
+                setTint(ContextCompat.getColor(it, color))
+                setBounds(0, 0, intrinsicWidth, intrinsicHeight)
+                Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
+                    .apply { draw(Canvas(this)) }
             }
         }
     }

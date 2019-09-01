@@ -7,7 +7,7 @@ data class Car(
     val name: String,
     val make: String,
     val group: String,
-    val color: String,
+    val color: Int,
     val series: String,
     val fuelType: FuelType,
     val fuelLevel: Double,
