@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#eef2f3"
-    android:elevation="4dp">
+    android:background="@color/colorListItem"
+    android:elevation="@dimen/elevation_default"
+    tools:context=".ui.MainActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -19,8 +20,8 @@
         android:id="@+id/imageViewCar"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerInside"
         android:contentDescription="@null"
+        android:scaleType="centerInside"
         app:layout_constraintDimensionRatio="1.2"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,12 +30,10 @@
 
     <TextView
         android:id="@+id/textViewVendor"
+        style="@style/CarItemTitleTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textAppearance="?textAppearanceHeadline5"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginStart="@dimen/dimen_8"
         app:layout_constraintBottom_toTopOf="@+id/textViewTransmissionType"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,11 +42,11 @@
 
     <TextView
         android:id="@+id/textViewTransmissionType"
+        style="@style/CarItemInfoTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textAppearance="?textAppearanceBody1"
-        android:textSize="16sp"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:textAppearance="?attr/textAppearanceBody1"
         app:layout_constraintBottom_toTopOf="@+id/textViewFuelType"
         app:layout_constraintStart_toStartOf="@+id/textViewVendor"
         app:layout_constraintTop_toBottomOf="@+id/textViewVendor"
@@ -55,10 +54,9 @@
 
     <TextView
         android:id="@+id/textViewFuelType"
+        style="@style/CarItemInfoTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?textAppearanceBody1"
-        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewPlate"
         app:layout_constraintStart_toStartOf="@+id/textViewTransmissionType"
         app:layout_constraintTop_toBottomOf="@+id/textViewTransmissionType"
@@ -67,10 +65,9 @@
 
     <TextView
         android:id="@+id/textViewPlate"
+        style="@style/CarItemInfoTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?textAppearanceBody1"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textViewFuelType"
         app:layout_constraintTop_toBottomOf="@+id/textViewFuelType"

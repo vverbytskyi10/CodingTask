@@ -16,9 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingStart="8dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="8dp"
+            android:paddingStart="@dimen/dimen_8"
+            android:paddingTop="@dimen/dimen_8"
+            android:paddingEnd="@dimen/dimen_8"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_car" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -36,10 +36,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:drawableTop="@drawable/ic_empty"
-            android:drawablePadding="32dp"
+            android:drawablePadding="@dimen/dimen_32"
             android:gravity="center"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
+            android:paddingStart="@dimen/dimen_32"
+            android:paddingEnd="@dimen/dimen_32"
             android:text="@string/load_error_message"
             android:textColor="@color/black" />
     </FrameLayout>

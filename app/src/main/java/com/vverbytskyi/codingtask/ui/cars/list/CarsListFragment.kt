@@ -46,7 +46,7 @@ class CarsListFragment : DaggerFragment() {
             adapter = carsListAdapter
             addItemDecoration(
                 VerticalSpaceItemDecoration(
-                    context!!, R.dimen.item_cars_list_spacing, drawFirst = true, drawLast = true
+                    context!!, R.dimen.dimen_8, drawFirst = true, drawLast = true
                 )
             )
         }
