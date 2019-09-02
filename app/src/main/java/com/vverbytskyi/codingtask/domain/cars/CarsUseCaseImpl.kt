@@ -16,9 +16,7 @@ class CarsUseCaseImpl(
         return try {
             return when(val response = carsRepository.getCars()) {
                 is SuccessResponse -> CompletedState(carMapper.dataToDomain(response.data))
-                is FailureResponse -> {
-                    ErrorState("")
-                }
+                is FailureResponse -> { ErrorState(response.error.message) }
             }
         } catch (e: Throwable) {
             ErrorState(e.message)
