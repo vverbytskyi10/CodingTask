@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.vverbytskyi.codingtask.R
@@ -11,6 +12,7 @@ import com.vverbytskyi.codingtask.domain.cars.model.CarsData
 import com.vverbytskyi.codingtask.ui.MainViewModel
 import com.vverbytskyi.codingtask.ui.common.CompletedState
 import com.vverbytskyi.codingtask.ui.common.ErrorState
+import com.vverbytskyi.codingtask.ui.common.StartedState
 import com.vverbytskyi.codingtask.ui.common.decorators.VerticalSpaceItemDecoration
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_cars_list.*
@@ -53,21 +55,24 @@ class CarsListFragment : DaggerFragment() {
 
         model.getCarsLiveData().observe(this, Observer { state ->
             when (state) {
+                is StartedState -> {
+                    layoutSwipeRefresh.isRefreshing = true
+                }
                 is CompletedState<*> -> {
                     (state.data as? CarsData)?.also { carsListAdapter.items = it.cars }
                     layoutState.visibility = View.GONE
+                    layoutSwipeRefresh.isRefreshing = false
                 }
                 is ErrorState -> {
-                    if (layoutSwipeRefresh.isRefreshing) {
-                        // TODO: show toast about refresh error
+                    if (carsListAdapter.itemCount == 0) {
+                        layoutState.visibility = View.VISIBLE
                     } else {
-                        if (carsListAdapter.itemCount == 0) {
-                            layoutState.visibility = View.VISIBLE
-                        }
+                        Toast.makeText(requireContext(), R.string.refresh_failed_message, Toast.LENGTH_SHORT).show()
                     }
+                    layoutSwipeRefresh.isRefreshing = false
                 }
             }
-            layoutSwipeRefresh.isRefreshing = false
+
         })
     }
 }
