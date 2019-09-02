@@ -1,4 +1,4 @@
-package com.vverbytskyi.codingtask.data.carslist
+package com.vverbytskyi.codingtask.data.cars
 
 import com.vverbytskyi.codingtask.data.common.NetworkResponse
 import com.vverbytskyi.codingtask.data.network.model.Car

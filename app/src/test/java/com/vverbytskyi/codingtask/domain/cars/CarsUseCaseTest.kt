@@ -1,12 +1,12 @@
 package com.vverbytskyi.codingtask.domain.cars
 
-import com.vverbytskyi.codingtask.data.carslist.CarsRepository
+import com.vverbytskyi.codingtask.data.cars.CarsRepository
 import com.vverbytskyi.codingtask.data.common.FailureResponse
 import com.vverbytskyi.codingtask.data.common.SuccessResponse
 import com.vverbytskyi.codingtask.domain.cars.model.CarMapper
 import com.vverbytskyi.codingtask.domain.cars.model.CarsData
-import com.vverbytskyi.codingtask.testutils.StubDataSource.carDataObjectStub
-import com.vverbytskyi.codingtask.testutils.StubDataSource.carDomainObjectStub
+import com.vverbytskyi.codingtask.testutils.StubDataSource.CAR_DATA_OBJECT_STUB
+import com.vverbytskyi.codingtask.testutils.StubDataSource.CAR_DOMAIN_OBJECT_STUB
 import com.vverbytskyi.codingtask.ui.common.CompletedState
 import com.vverbytskyi.codingtask.ui.common.ErrorState
 import kotlinx.coroutines.runBlocking
@@ -25,8 +25,8 @@ class CarsUseCaseTest {
 
     @Test
     fun `WHEN getCars success THEN CompletedState dispatched`() {
-        val dataCarsListStub = listOf(carDataObjectStub)
-        val carsDataStub = CarsData(listOf(carDomainObjectStub))
+        val dataCarsListStub = listOf(CAR_DATA_OBJECT_STUB)
+        val carsDataStub = CarsData(listOf(CAR_DOMAIN_OBJECT_STUB))
 
         runBlocking {
             given(carsRepositoryMock.getCars()).willReturn(SuccessResponse(dataCarsListStub))

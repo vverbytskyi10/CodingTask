@@ -1,4 +1,4 @@
-package com.vverbytskyi.codingtask.data.carslist
+package com.vverbytskyi.codingtask.data.cars
 
 import com.vverbytskyi.codingtask.data.common.FailureResponse
 import com.vverbytskyi.codingtask.data.common.NetworkResponse

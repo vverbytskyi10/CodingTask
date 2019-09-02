@@ -9,7 +9,7 @@ import com.vverbytskyi.codingtask.domain.cars.model.TransmissionType
 
 object StubDataSource {
 
-    val carDataObjectStub = Car(
+    val CAR_DATA_OBJECT_STUB = Car(
         "1",
         "1",
         "1",
@@ -28,7 +28,7 @@ object StubDataSource {
         "test"
     )
 
-    val carDomainObjectStub = com.vverbytskyi.codingtask.domain.cars.model.Car(
+    val CAR_DOMAIN_OBJECT_STUB = com.vverbytskyi.codingtask.domain.cars.model.Car(
         "1",
         "1",
         "1",

@@ -1,8 +1,8 @@
 package com.vverbytskyi.codingtask.domain.cars.model
 
 import com.vverbytskyi.codingtask.R
-import com.vverbytskyi.codingtask.testutils.StubDataSource.carDataObjectStub
-import com.vverbytskyi.codingtask.testutils.StubDataSource.carDomainObjectStub
+import com.vverbytskyi.codingtask.testutils.StubDataSource.CAR_DATA_OBJECT_STUB
+import com.vverbytskyi.codingtask.testutils.StubDataSource.CAR_DOMAIN_OBJECT_STUB
 import org.assertj.core.api.Assertions
 import org.junit.Test
 
@@ -140,12 +140,12 @@ class CarMapperTest {
 
     @Test
     fun `WHEN data Car object received THEN proper domain Car object returned`() {
-        val actualCarDomainObject = carMapper.dataToDomain(carDataObjectStub)
+        val actualCarDomainObject = carMapper.dataToDomain(CAR_DATA_OBJECT_STUB)
 
         Assertions
             .assertThat(actualCarDomainObject)
-            .`as`("car data object was correctly mapped into car domain object and equal to carDomainObjectStub")
-            .isEqualTo(carDomainObjectStub)
+            .`as`("car data object was correctly mapped into car domain object and equal to CAR_DOMAIN_OBJECT_STUB")
+            .isEqualTo(CAR_DOMAIN_OBJECT_STUB)
     }
 
     @Test
@@ -160,10 +160,10 @@ class CarMapperTest {
 
     @Test
     fun `WHEN data cars list is received THEN proper CarsData returned`() {
-        val expectedCarsData = CarsData(listOf(carDomainObjectStub))
+        val expectedCarsData = CarsData(listOf(CAR_DOMAIN_OBJECT_STUB))
 
         Assertions
-            .assertThat(carMapper.dataToDomain(listOf(carDataObjectStub)))
+            .assertThat(carMapper.dataToDomain(listOf(CAR_DATA_OBJECT_STUB)))
             .`as`("data cars list isn't empty - proper domain CarsData returned")
             .isEqualTo(expectedCarsData)
     }

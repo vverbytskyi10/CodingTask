@@ -1,6 +1,6 @@
 package com.vverbytskyi.codingtask.domain.cars
 
-import com.vverbytskyi.codingtask.data.carslist.CarsRepository
+import com.vverbytskyi.codingtask.data.cars.CarsRepository
 import com.vverbytskyi.codingtask.data.common.FailureResponse
 import com.vverbytskyi.codingtask.data.common.SuccessResponse
 import com.vverbytskyi.codingtask.domain.cars.model.CarMapper
