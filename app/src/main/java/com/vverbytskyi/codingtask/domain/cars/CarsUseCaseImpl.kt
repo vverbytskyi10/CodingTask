@@ -1,6 +1,6 @@
 package com.vverbytskyi.codingtask.domain.cars
 
-import com.vverbytskyi.codingtask.data.carslist.CarsRepository
+import com.vverbytskyi.codingtask.data.cars.CarsRepository
 import com.vverbytskyi.codingtask.data.common.FailureResponse
 import com.vverbytskyi.codingtask.data.common.SuccessResponse
 import com.vverbytskyi.codingtask.domain.cars.model.CarMapper
@@ -16,9 +16,7 @@ class CarsUseCaseImpl(
         return try {
             return when(val response = carsRepository.getCars()) {
                 is SuccessResponse -> CompletedState(carMapper.dataToDomain(response.data))
-                is FailureResponse -> {
-                    ErrorState("")
-                }
+                is FailureResponse -> { ErrorState(response.error.message) }
             }
         } catch (e: Throwable) {
             ErrorState(e.message)

@@ -2,8 +2,8 @@ package com.vverbytskyi.codingtask.di.module.carslist
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
-import com.vverbytskyi.codingtask.data.carslist.CarsRepository
-import com.vverbytskyi.codingtask.data.carslist.CarsRepositoryImpl
+import com.vverbytskyi.codingtask.data.cars.CarsRepository
+import com.vverbytskyi.codingtask.data.cars.CarsRepositoryImpl
 import com.vverbytskyi.codingtask.data.network.CarsService
 import com.vverbytskyi.codingtask.domain.cars.CarsUseCase
 import com.vverbytskyi.codingtask.domain.cars.CarsUseCaseImpl
@@ -11,8 +11,6 @@ import com.vverbytskyi.codingtask.domain.cars.model.CarMapper
 import com.vverbytskyi.codingtask.ui.MainViewModel
 import com.vverbytskyi.codingtask.ui.cars.list.CarsListAdapter
 import com.vverbytskyi.codingtask.ui.common.ViewModelProviderFactory
-import com.vverbytskyi.codingtask.ui.common.map.GoogleMapProvider
-import com.vverbytskyi.codingtask.ui.common.map.MapProvider
 import dagger.Module
 import dagger.Provides
 
