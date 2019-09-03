@@ -15,10 +15,28 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "API_URL", "\"https://cdn.sixt.io/codingtask/\""
     }
+    signingConfigs {
+        debug {
+            storeFile file("$rootDir/tools/codingtask-debug.keystore")
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        release {
+            storeFile file("$rootDir/tools/codingtask-release.keystore")
+            storePassword 'test123'
+            keyAlias 'codingtaskreleasekey'
+            keyPassword 'test123'
+        }
+    }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     testOptions {
