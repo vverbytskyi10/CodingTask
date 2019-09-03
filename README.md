@@ -11,3 +11,5 @@ In general, only official Google libraries were used for project implementation.
 5. **Glide** - image loading
 6. **GoogleMap** - map provider
 7. **UI libraries**: MeterialLibrary, ViewPager2, ConstraintLayout
+
+Source code contains release and rebug keys with proper setup, fingerprints of which are used in the GoogleAPI console, so app can be properly assempled from the source code.
