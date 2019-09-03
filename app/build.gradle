@@ -56,6 +56,14 @@ ext {
     version_dagger = '2.24'
     version_glide = '4.9.0'
     version_google_maps = '17.0.0'
+    version_junit = '1.1.1'
+    version_mockito = '2.24.0'
+    version_assertj = '3.11.1'
+    version_test_core = '1.2.0'
+    version_core_testing = '2.0.1'
+    version_mock_web_servier = '4.1.0'
+    version_runner = '1.2.0'
+    version_espresso = '3.2.0'
 }
 
 dependencies {
@@ -101,14 +109,14 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Testing
-    testImplementation 'androidx.test.ext:junit:1.1.1'
-    testImplementation 'org.mockito:mockito-core:2.24.0'
-    testImplementation 'org.mockito:mockito-android:2.24.0'
-    testImplementation 'org.assertj:assertj-core:3.11.1'
-    testImplementation 'androidx.test:core:1.2.0'
-    testImplementation 'androidx.arch.core:core-testing:2.0.1'
+    testImplementation "androidx.test.ext:junit:$version_junit"
+    testImplementation "org.mockito:mockito-core:$version_mockito"
+    testImplementation "org.mockito:mockito-android:$version_mockito"
+    testImplementation "org.assertj:assertj-core:$version_assertj"
+    testImplementation "androidx.test:core:$version_test_core"
+    testImplementation "androidx.arch.core:core-testing:$version_core_testing"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version_coroutines"
-    testImplementation "com.squareup.okhttp3:mockwebserver:4.1.0"
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "com.squareup.okhttp3:mockwebserver:$version_mock_web_servier"
+    androidTestImplementation "androidx.test:runner:$version_runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
 }
